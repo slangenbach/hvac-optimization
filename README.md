@@ -1,9 +1,10 @@
 # HVAC model building case study
 
 ## About
-The files within this repository are used to conduct a case study.
-The case study is based on data from [UCI's machine learning repository](https://archive.ics.uci.edu/ml/datasets/Occupancy+Detection+). 
-Its content, tasks and analysis are summarized within the following Jupyter notebook: `notebooks/00-summary.ipynb`
+The files within this repository are used to conduct a case study related to occupancy detection of an office room. Its content, tasks and analysis are summarized within a [Jupyter notebook](/notebooks/00-summary.ipynb).
+The [layout](https://drivendata.github.io/cookiecutter-data-science/#directory-structure) of the repository follows best practice from [cookiecutter datascience](https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science).
+The case study is based on data from [UCI's machine learning repository](https://archive.ics.uci.edu/ml/datasets/Occupancy+Detection+) and is similar to the analysis conducted by [Candanedo and Feldheim](https://www.sciencedirect.com/science/article/abs/pii/S0378778815304357).
+
 
 ## Preequisites
 * (Anaconda) Python 3.6+
@@ -21,4 +22,4 @@ Its content, tasks and analysis are summarized within the following Jupyter note
  
 ## Resources
 All materials (documentation, papers, books, blog posts, etc.) used to conduct the study are listed in
-the references section of the summary notebook `notebooks/00-summary.ipynb`.
+the references section of the summary notebook (see above).
