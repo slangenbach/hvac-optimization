@@ -6,14 +6,13 @@ The [layout](https://drivendata.github.io/cookiecutter-data-science/#directory-s
 The case study is based on data from [UCI's machine learning repository](https://archive.ics.uci.edu/ml/datasets/Occupancy+Detection+) and is similar to the analysis conducted by [Candanedo and Feldheim](https://www.sciencedirect.com/science/article/abs/pii/S0378778815304357).
 
 
-## Preequisites
+## Prerequisites
 * (Anaconda) Python 3.6+
 * Unix-like environment (Linux, macOS, WSL on Windows)
 
 ## Usage
 1. Clone this repository and navigate into its root directory
 1. Create a new conda environment via `conda env create -f conda_env.yml` and activate it `conda activate hvac`
-1. [Download case study raw data](https://archive.ics.uci.edu/ml/machine-learning-databases/00357/) and put into `data/raw/`
 1. Run jupyter lab in order to run/adapt notebooks `jupyter lab`
 1. Optionally: Launch MLflow in order to track experiments `./project/start_mlflow_server.sh` (make sure to adapt script variables accordingly)
 
