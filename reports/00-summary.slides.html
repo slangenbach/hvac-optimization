@@ -13207,38 +13207,38 @@ a.anchor-link {
 
 </div>
 </div>
-</div><aside class="notes">
-
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TODOs">TODOs<a class="anchor-link" href="#TODOs">&#182;</a></h2><ul>
-<li><del>Export summary as Reveal.js slides</del></li>
-<li>Adapt summary text to presentation</li>
-<li><del>Update management summary</del></li>
-<li><del>Add brief explanation of recall and precision in evaluation metric section</del></li>
-<li><del>Add short paragraph to data section</del></li>
-<li><del>Add column for missing values in data table</del></li>
-<li><del>Add another by_hour plot filtered by weekend</del></li>
-<li><del>Add evaluation of additional models in model section</del></li>
-<li><del>Add visualization of decision tree in evaluation section</del></li>
-<li><del>Add metrics of final model in validation section</del></li>
-<li><del>Finalize management advice</del></li>
-<li><del>Move links in deployment section to resources</del></li>
-<li><del>Add content to monitoring section (blog post)</del></li>
-<li><del>Add content to adaption section (discuss available data, approach described in monitoring section, and future data)</del></li>
-<li><del>Refactor modeling functions in helpers.py as class</del><ul>
-<li><del>Add properly styled confusion matrix to model output</del></li>
-<li><del>Add type annotations to functions</del></li>
-<li><del>Add params to docstrings</del></li>
-</ul>
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda">&#182;</a></h2><ol>
+<li>Management Summary</li>
+<li>Background<ol>
+<li>Context of case study</li>
+<li>Tasks</li>
+<li>Assumptions</li>
+<li>Problem statement</li>
+</ol>
 </li>
-</ul>
+<li>Model Building<ol>
+<li>Data Exploration</li>
+<li>Feature Engineering</li>
+<li>Modeling</li>
+<li>Evaluation</li>
+</ol>
+</li>
+<li>Model Deployment<ol>
+<li>Architecture</li>
+<li>Deployment</li>
+<li>Monitoring</li>
+<li>Adaption</li>
+</ol>
+</li>
+</ol>
 
 </div>
 </div>
-</div>
-</aside></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13384,13 +13384,6 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <li>Note that train data was recored <strong>after</strong> test data, but <strong>before</strong> validation data.</li>
 <li>Unfortunately <strong>test</strong> data does not include <strong>weekends</strong>, but validation data does.</li>
 </ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <table>
 <thead><tr>
 <th></th>
@@ -13453,7 +13446,7 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13488,8 +13481,9 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The plot below shows the average feature value, i.e. temperature, light, etc., per time of day in hours (training data). Note that the average value of <strong>light</strong> tracks <strong>occupancy</strong> quite well.</p>
-<p><img src="../references/figures/avg_feature_value_by_hour.svg" alt="Average feature value by hour"></p>
+<p>Line plot of average feature values by time of day in hours.<br>
+Note that the average value of <strong>light</strong> tracks <strong>occupancy</strong> quite well.<br>
+<img src="../references/figures/avg_feature_value_by_hour.svg" alt="Average feature value by hour"></p>
 
 </div>
 </div>
@@ -13497,7 +13491,8 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="../references/figures/avg_feature_value_by_hour_weekday.svg" alt="Average feature value by hour weekday"></p>
+<p>Same plot as before, but with data limited to week<strong>days</strong>
+<img src="../references/figures/avg_feature_value_by_hour_weekday.svg" alt="Average feature value by hour weekday"></p>
 
 </div>
 </div>
@@ -13505,7 +13500,8 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="../references/figures/avg_feature_value_by_hour_weekend.svg" alt="Average feature value by hour weekend"></p>
+<p>Same plot as before, but with data limited to week<strong>ends</strong>
+<img src="../references/figures/avg_feature_value_by_hour_weekend.svg" alt="Average feature value by hour weekend"></p>
 
 </div>
 </div>
@@ -13513,14 +13509,7 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Features">Features<a class="anchor-link" href="#Features">&#182;</a></h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In addition to existing features and time components (year, month, day, etc.) already represented by the timestamp of the data, the following features were engineered:</p>
+<h3 id="Features">Features<a class="anchor-link" href="#Features">&#182;</a></h3><p>In addition to existing features and time components (year, month, day, etc.) already represented by the timestamp of the data, the following features were engineered:</p>
 <table>
 <thead><tr>
 <th>feature</th>
@@ -13569,14 +13558,7 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>A simple decision tree (<strong>tree_limited</strong>) with depth limited to 3 nodes, using only original features, outperforms any other models</p>
+<h3 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h3><p>A simple decision tree (<strong>tree_limited</strong>) with depth limited to 3 nodes, using only original features, outperforms any other model, i.e. RandomForrests using various parameters and features.</p>
 <table>
 <thead><tr>
 <th>model</th>
@@ -13612,14 +13594,6 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <td>0.9992</td>
 <td>1.0</td>
 </tr>
-<tr>
-<td>rf_handpicked</td>
-<td>RandomForrest with 3 hand picked features (light_on, weekend, office_hour)</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>1.0</td>
-</tr>
 </tbody>
 </table>
 
@@ -13629,14 +13603,7 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Evaluation">Evaluation<a class="anchor-link" href="#Evaluation">&#182;</a></h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Feature importances of <strong>tree_limited</strong> model:<br>
+<h3 id="Evaluation">Evaluation<a class="anchor-link" href="#Evaluation">&#182;</a></h3><p>Feature importances of <strong>tree_limited</strong> model:<br>
 <img src="../references/figures/tree_limited_feat_importances_plot.svg" alt="Feature importances tree_limited model"></p>
 
 </div>
@@ -13654,56 +13621,37 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Validation">Validation<a class="anchor-link" href="#Validation">&#182;</a></h2>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The <strong>tree_limited</strong> model achieves accuracy and F1-scores of <strong>0.99</strong> on the validation dataset.</p>
+<h2 id="Validation">Validation<a class="anchor-link" href="#Validation">&#182;</a></h2><p>The <strong>tree_limited</strong> model achieves accuracy of <strong>0.99</strong> and F1-score of <strong>0.98</strong> on the validation dataset - all samples are classified correctly.</p>
+<p>Confusion matrix of <strong>tree limited</strong> model:<br>
+<img src="../references/figures/conf_matrix_plot_final_model.svg" alt="Confusion matrix tree_limited model"></p>
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Model-deployment">Model deployment<a class="anchor-link" href="#Model-deployment">&#182;</a></h2><blockquote><p>Only a small fraction of real-world ML systems is composed of the ML code, as shown by the small black box in the middle. The required surrounding infrastructure is vast and complex</p>
 </blockquote>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="../references/hidden_technical_debt_in_ml_systems.png" alt="Hidden technical debt in ML systems"></p>
 
 </div>
 </div>
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Architecture">Architecture<a class="anchor-link" href="#Architecture">&#182;</a></h3><blockquote><p>Standing on the shoulders of giants</p>
 </blockquote>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="../references/hvac_architecture.svg" alt="HVAC architecture using AWS"></p>
 
 </div>
 </div>
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Overview">Overview<a class="anchor-link" href="#Overview">&#182;</a></h4><ul>
+<h3 id="Overview-of-architecture-core-components">Overview of architecture core components<a class="anchor-link" href="#Overview-of-architecture-core-components">&#182;</a></h3><ul>
 <li><a href="https://aws.amazon.com/iot-core/">IoT Core</a> connects sensors in office buildings to the AWS cloud</li>
 <li><a href="https://aws.amazon.com/iot-analytics/">IoT Analytics</a><ul>
 <li>collects sensor data from IoT Core and stores it in a timeseries data store</li>
@@ -13733,19 +13681,14 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Deployment">Deployment<a class="anchor-link" href="#Deployment">&#182;</a></h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://www.mlflow.org/">Mlflow</a> is Python package for managing machine learning experiments and deployming models.<br>
-It allows us to deploy models in various ways, e.g. as REST-based webservices, within Docker containers and using cloud based ML services such as SageMaker.</p>
+<h3 id="Deployment">Deployment<a class="anchor-link" href="#Deployment">&#182;</a></h3><ul>
+<li><a href="https://www.mlflow.org/">Mlflow</a> is Python package for managing machine learning experiments and deployming models.  </li>
+<li>It allows us to deploy models in various ways, e.g. as REST-based webservices, within Docker containers and using cloud based ML services such as SageMaker.</li>
+</ul>
 
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13759,7 +13702,7 @@ mlflow models build-docker -m <span class="nv">$PATH_TO_MODEL</span> <span class
 
 </div>
 </div>
-</div></section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13773,18 +13716,11 @@ mlflow sagemaker deploy -m <span class="nv">$MODEL_NAME</span> <span class="o">[
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Monitoring">Monitoring<a class="anchor-link" href="#Monitoring">&#182;</a></h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
+<h3 id="Monitoring">Monitoring<a class="anchor-link" href="#Monitoring">&#182;</a></h3><ul>
 <li>AWS SageMaker has a feature called <strong>model monitor</strong> which continously checks models for data and model drift</li>
 <li>Using model monitor we can save input data sent to our model endpoint and predictions made by the model</li>
 <li>Model monitor calculates various statistics (mean, standard deviation, min, max, quantiles, etc.) for every feature</li>
@@ -13794,21 +13730,15 @@ mlflow sagemaker deploy -m <span class="nv">$MODEL_NAME</span> <span class="o">[
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Adaption">Adaption<a class="anchor-link" href="#Adaption">&#182;</a></h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
+<h3 id="Adaption">Adaption<a class="anchor-link" href="#Adaption">&#182;</a></h3><ul>
 <li>In a real world scenario we would need to gather much more data before training and deploying any model</li>
-<li>As sensor recordings should not change too drastically too quickly, <strong>offline</strong> training is sufficient for this usecase</li>
-<li>Using AWS SageMaker model monitor we can deploy our model and retrain when necessary</li>
+<li>As sensor recordings should not change too drastically too quickly in the real, <strong>offline</strong> training is sufficient for this usecase</li>
+<li>Using AWS SageMaker model monitor we can deploy our model and retrain and deploy when necessary </li>
+<li>Given the available data retraining may be necessary quite often in the beginning</li>
 </ul>
 
 </div>
@@ -13817,14 +13747,7 @@ mlflow sagemaker deploy -m <span class="nv">$MODEL_NAME</span> <span class="o">[
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ol>
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
 <li><a href="https://developers.google.com/machine-learning/guides/rules-of-ml">Google rules of ML</a></li>
 <li><a href="https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf">Hidden technical debt in Machine Learning systems</a></li>
 <li><a href="https://facebook.github.io/prophet/docs/quick_start.html#python-api">Prophet documentation</a></li>
@@ -13853,7 +13776,7 @@ mlflow sagemaker deploy -m <span class="nv">$MODEL_NAME</span> <span class="o">[
 
 </div>
 </div>
-</div></div></section></section>
+</div></section></section>
 </div>
 </div>
 
