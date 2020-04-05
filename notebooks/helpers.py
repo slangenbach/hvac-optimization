@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib as mpl
 import mlflow
 import mlflow.sklearn
-from sklearn.model_selection import cross_val_score, cross_validate
-from sklearn.metrics import accuracy_score, f1_score, classification_report, plot_confusion_matrix, plot_precision_recall_curve
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import classification_report, plot_confusion_matrix
 
 
 def save_fig(plot, figure_path: Path, figure_name: str, file_format: str = "svg", dpi: int = 150) -> None:
@@ -41,7 +41,7 @@ class MLPipeline:
         mlflow.set_experiment(self.mlflow_experiment) 
 
         # use seaborn styling for plots
-        mpl.style.use("seaborn")
+        mpl.style.use("seaborn-colorblind")
         mpl.rcParams.update({
             # set figure size to A5 landscape for all plots
             "figure.figsize": (8.3, 5.8),
