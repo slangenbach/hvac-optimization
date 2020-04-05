@@ -13247,7 +13247,7 @@ a.anchor-link {
 <li>Our model uses decision trees which predict room occupancy with 99% accuracy</li>
 <li>We suggest to use cloud services (AWS SageMaker) for model deployment, monitoring and adaption</li>
 <li>As available data is limited - all measurements were recorded during February 2015 - we strongly advise to gather more/additional data (c.f. <a href="https://energyplus.net">EnergyPlus tool</a>), and re-evaluate the model before conducting large scale rollouts</li>
-<li>Additionally, in order to create a business case for HVAC regulation, its main cost drivers must be indentified and considered when improving the model</li>
+<li>Additionally, in order to create a business case for HVAC regulation, its main cost drivers must be identified and considered when improving the model</li>
 <li>A simple strategy for staged rollouts could be to focus on one room/floor/office building in the beginning move forward</li>
 <li>Finally, reminding employees to turn off HVAC when they switch off light in the office could be a quickwin not even requiring model rollout</li>
 </ul>
@@ -13380,8 +13380,8 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h3><ul>
-<li>All samples in train, test and valdiation datasets were recorded in February 2015.  </li>
-<li>Note that train data was recored <strong>after</strong> test data, but <strong>before</strong> validation data.</li>
+<li>All samples in train, test and validation datasets were recorded in February 2015.  </li>
+<li>Note that train data was recoded <strong>after</strong> test data, but <strong>before</strong> validation data.</li>
 <li>Unfortunately <strong>test</strong> data does not include <strong>weekends</strong>, but validation data does.</li>
 </ul>
 <table>
@@ -13558,7 +13558,7 @@ Note that the average value of <strong>light</strong> tracks <strong>occupancy</
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h3><p>A simple decision tree (<strong>tree_limited</strong>) with depth limited to 3 nodes, using only original features, outperforms any other model, i.e. RandomForrests using various parameters and features.</p>
+<h3 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h3><p>A simple decision tree (<strong>tree_limited</strong>) with depth limited to 3 nodes, using only original features, outperforms any other model, i.e. RandomForests using various parameters and features.</p>
 <table>
 <thead><tr>
 <th>model</th>
@@ -13659,7 +13659,7 @@ Note that the average value of <strong>light</strong> tracks <strong>occupancy</
 <li>features a built-in SQL engine to easily query data</li>
 </ul>
 </li>
-<li><a href="https://aws.amazon.com/quicksight/">QuickSight</a> visualizes sendor data in dashboards</li>
+<li><a href="https://aws.amazon.com/quicksight/">QuickSight</a> visualizes sensor data in dashboards</li>
 <li><a href="https://aws.amazon.com/sagemaker/">SageMaker</a><ul>
 <li>provides an IDE for machine learning (SageMaker Studio) which supports experiment management (similar to <a href="https://www.mlflow.org/">MLflow</a> and many more features</li>
 <li>runs pipelines to preprocess input data before model building <strong>and</strong> inference</li>
@@ -13682,7 +13682,7 @@ Note that the average value of <strong>light</strong> tracks <strong>occupancy</
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Deployment">Deployment<a class="anchor-link" href="#Deployment">&#182;</a></h3><ul>
-<li><a href="https://www.mlflow.org/">Mlflow</a> is Python package for managing machine learning experiments and deployming models.  </li>
+<li><a href="https://www.mlflow.org/">Mlflow</a> is Python package for managing machine learning experiments and deploying models.  </li>
 <li>It allows us to deploy models in various ways, e.g. as REST-based webservices, within Docker containers and using cloud based ML services such as SageMaker.</li>
 </ul>
 
@@ -13692,7 +13692,7 @@ Note that the average value of <strong>light</strong> tracks <strong>occupancy</
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Deploying a model is straightforwarded and can be done using the CLI:</p>
+<p>Deploying a model is straightforward and can be done using the CLI:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Deploy model as webservice</span>
 mlflow models serve -m <span class="nv">$PATH_TO_MODEL</span> <span class="o">[</span>OPTIONS<span class="o">]</span>
 
@@ -13721,7 +13721,7 @@ mlflow sagemaker deploy -m <span class="nv">$MODEL_NAME</span> <span class="o">[
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Monitoring">Monitoring<a class="anchor-link" href="#Monitoring">&#182;</a></h3><ul>
-<li>AWS SageMaker has a feature called <strong>model monitor</strong> which continously checks models for data and model drift</li>
+<li>AWS SageMaker has a feature called <strong>model monitor</strong> which continuously checks models for data and model drift</li>
 <li>Using model monitor we can save input data sent to our model endpoint and predictions made by the model</li>
 <li>Model monitor calculates various statistics (mean, standard deviation, min, max, quantiles, etc.) for every feature</li>
 <li>That information is compared against a baseline derived from data used to train the model via a user defined schedule</li>
