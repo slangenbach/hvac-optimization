@@ -5,7 +5,7 @@ import matplotlib as mpl
 import mlflow
 import mlflow.sklearn
 from sklearn.model_selection import cross_val_score
-from sklearn.metrics import classification_report, plot_confusion_matrix
+from sklearn.metrics import classification_report, plot_confusion_matrix, accuracy_score, f1_score
 
 
 def save_fig(plot, figure_path: Path, figure_name: str, file_format: str = "svg", dpi: int = 150) -> None:
@@ -67,7 +67,7 @@ class MLPipeline:
         :param model_name: Name of model running through pipeline
         :param cv: Cross-validation parameter used in sklearn cross_val_score method
         :param save_model: Boolean indicating whether to save model to disk
-        :returns: Dict containing sklearn model object and predictions on self.X_test
+        :returns: Dict containing sklearn model object, predictions on self.X_train and self.X_test, and missclassifications
         """
         with mlflow.start_run():
 
@@ -77,7 +77,16 @@ class MLPipeline:
             y_pred_train = model.predict(self.X_train[features])
             y_pred_test = model.predict(self.X_test[features])
 
-            # calculate cross-validated metrics
+            # get missclassifications
+            misses_train = self.X_train[features][self.y_train != y_pred_train].index
+            misses_test = self.X_test[features][self.y_test != y_pred_test].index
+
+            # calculate (cross-validated) metrics
+            acc_train = accuracy_score(self.y_train, y_pred_train)
+            acc_test = accuracy_score(self.y_test, y_pred_test)
+            f1_train = f1_score(self.y_train, y_pred_train)
+            f1_test = f1_score(self.y_test, y_pred_test)
+
             cv_acc_train = np.average(cross_val_score(model, self.X_train[features], y_pred_train,
                                                       scoring="accuracy", cv=cv, n_jobs=-1))
             cv_acc_test = np.average(cross_val_score(model, self.X_test[features], y_pred_test,
@@ -89,6 +98,10 @@ class MLPipeline:
 
             # print results
             print(
+                f"Accuracy train: {np.round(acc_train, 4)}",
+                f"Accuracy test: {np.round(acc_test, 4)}",
+                f"F1-score train: {np.round(f1_train, 4)}",
+                f"F1-score test: {np.round(f1_test, 4)}",
                 f"CV accuracy train: {np.round(cv_acc_train, 4)}",
                 f"CV accuracy test: {np.round(cv_acc_test, 4)}",
                 f"CV F1-score train: {np.round(cv_f1_train, 4)}",
@@ -122,7 +135,9 @@ class MLPipeline:
             if save_model:
                 mlflow.sklearn.save_model(model, self.model_path.joinpath(model_name))
 
-            result = {"model": model, "y_pred": y_pred_test}
+            result = {"model": model, "y_pred_test": y_pred_test, "y_pred_train": y_pred_train,
+                      "misses_train": misses_train, "misses_test": misses_test}
+
             return result
 
     @staticmethod
