@@ -13265,9 +13265,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Context">Context<a class="anchor-link" href="#Context">&#182;</a></h3><blockquote><p>Your company is keen on transforming their <strong>office buildings</strong> into “smart buildings”, so as to underline their commitment to digitalization.<br>
-New sensors detecting various attributes have been deployed with the <strong>goal of sensing whether a person is present in a room or not</strong> so as to regulate HVAC accordingly.<br>
-Your CFO senses a <strong>strong business case</strong> since her gut feeling is that <strong>most people leave climate control running, even when out of the office</strong>.</p>
+<h3 id="Context">Context<a class="anchor-link" href="#Context">&#182;</a></h3><blockquote><p>Your company is keen on transforming their <strong>office buildings</strong> into “smart buildings”, so as to underline their commitment to digitalization. New sensors detecting various attributes have been deployed with the <strong>goal of sensing whether a person is present in a room or not</strong> so as to regulate HVAC accordingly. Your CFO senses a <strong>strong business case</strong> since her gut feeling is that <strong>most people leave climate control running, even when out of the office</strong>.</p>
 </blockquote>
 
 </div>
@@ -13334,7 +13332,7 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Evaluation-metric">Evaluation metric<a class="anchor-link" href="#Evaluation-metric">&#182;</a></h2><p>According to the assumptions mentioned afore, model performance will be evaluated by <strong>F1 Score</strong>, the weighted average between recall and precision.</p>
+<h2 id="Evaluation-metric">Evaluation metric<a class="anchor-link" href="#Evaluation-metric">&#182;</a></h2><p>According to the assumptions mentioned afore, model performance will be evaluated by <strong>accuracy</strong> and <strong>F1 Score</strong> (the weighted average between recall and precision).</p>
 
 </div>
 </div>
@@ -13343,6 +13341,7 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Recall (pun intended) that <strong>precision</strong> measures how <strong>accurate</strong> a model is by stating the following question for the case at hand: <em>"Ouf of those samples where rooms were predicted as occupied, how many were actually occupied?"</em>. Instead <strong>recall</strong> measures how many of the actually occupied rooms in the dataset did our model label as occupied.</p>
+<p>In binary classification (case at hand) recall of the <em>positive</em> class is called <em>sensitiviy</em>, while recall of the <em>negative</em> class is called <em>specifity</em>.</p>
 
 </div>
 </div>
@@ -13381,7 +13380,7 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h3><ul>
 <li>All samples in train, test and validation datasets were recorded in February 2015.  </li>
-<li>Note that train data was recoded <strong>after</strong> test data, but <strong>before</strong> validation data.</li>
+<li>Note that train data was recorded <strong>after</strong> test data, but <strong>before</strong> validation data.</li>
 <li>Unfortunately <strong>test</strong> data does not include <strong>weekends</strong>, but validation data does.</li>
 </ul>
 <table>
@@ -13481,9 +13480,7 @@ Your CFO senses a <strong>strong business case</strong> since her gut feeling is
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Line plot of average feature values by time of day in hours.<br>
-Note that the average value of <strong>light</strong> tracks <strong>occupancy</strong> quite well.<br>
-<img src="../references/figures/avg_feature_value_by_hour.svg" alt="Average feature value by hour"></p>
+<p><img src="../references/figures/avg_feature_value_by_hour.svg" alt="Average feature value by hour"></p>
 
 </div>
 </div>
@@ -13491,17 +13488,7 @@ Note that the average value of <strong>light</strong> tracks <strong>occupancy</
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Same plot as before, but with data limited to week<strong>days</strong>
-<img src="../references/figures/avg_feature_value_by_hour_weekday.svg" alt="Average feature value by hour weekday"></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Same plot as before, but with data limited to week<strong>ends</strong>
-<img src="../references/figures/avg_feature_value_by_hour_weekend.svg" alt="Average feature value by hour weekend"></p>
+<p><img src="../references/figures/avg_feature_value_by_hour_week_day_end.svg" alt="Average feature value by hour weekday vs weekend"></p>
 
 </div>
 </div>
@@ -13593,6 +13580,14 @@ Note that the average value of <strong>light</strong> tracks <strong>occupancy</
 <td>1.0</td>
 <td>0.9992</td>
 <td>1.0</td>
+</tr>
+<tr>
+<td>rf</td>
+<td>random forrest with default parameters</td>
+<td>0.942</td>
+<td>0.9696</td>
+<td>0.857</td>
+<td>0.9576</td>
 </tr>
 </tbody>
 </table>
@@ -13768,6 +13763,7 @@ mlflow sagemaker deploy -m <span class="nv">$MODEL_NAME</span> <span class="o">[
 <li><a href="https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9">Blog post explaining accuracy, recall, precision and F1 score</a></li>
 <li><a href="https://medium.com/@QuantumBlack/introducing-kedro-the-open-source-library-for-production-ready-machine-learning-code-d1c6d26ce2cf">Blog post on Kedro</a></li>
 <li><a href="https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/">Blog post on feature selection methods</a></li>
+<li><a href="https://towardsdatascience.com/scikit-learn-decision-trees-explained-803f3812290d">Blog post on interpreting output of sklearn's plot_decision_tree function</a></li>
 <li><a href="https://towardsdatascience.com/deploying-models-to-production-with-mlflow-and-amazon-sagemaker-d21f67909198">Blog post on deploying MLflow models to AWS SageMaker</a></li>
 <li><a href="https://aws.amazon.com/blogs/aws/amazon-sagemaker-model-monitor-fully-managed-automatic-monitoring-for-your-machine-learning-models/">Blog post on AWS SageMaker model monitor</a></li>
 <li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html">Working with time series section of Python data science handbook</a></li>
@@ -13776,6 +13772,19 @@ mlflow sagemaker deploy -m <span class="nv">$MODEL_NAME</span> <span class="o">[
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div></section></section>
 </div>
 </div>
