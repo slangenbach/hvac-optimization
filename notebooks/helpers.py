@@ -87,25 +87,19 @@ class MLPipeline:
             f1_train = f1_score(self.y_train, y_pred_train)
             f1_test = f1_score(self.y_test, y_pred_test)
 
-            cv_acc_train = np.average(cross_val_score(model, self.X_train[features], y_pred_train,
+            cv_acc_train = np.average(cross_val_score(model, self.X_train[features], self.y_train,
                                                       scoring="accuracy", cv=cv, n_jobs=-1))
-            cv_acc_test = np.average(cross_val_score(model, self.X_test[features], y_pred_test,
-                                                     scoring="accuracy", cv=cv, n_jobs=-1))
-            cv_f1_train = np.average(cross_val_score(model, self.X_train[features], y_pred_train,
+            cv_f1_train = np.average(cross_val_score(model, self.X_train[features], self.y_train,
                                                      scoring="f1", cv=cv, n_jobs=-1))
-            cv_f1_test = np.average(cross_val_score(model, self.X_test[features], y_pred_test,
-                                                    scoring="f1", cv=cv, n_jobs=-1))
 
             # print results
             print(
                 f"Accuracy train: {np.round(acc_train, 4)}",
+                f"CV accuracy train: {np.round(cv_acc_train, 4)}",
                 f"Accuracy test: {np.round(acc_test, 4)}",
                 f"F1-score train: {np.round(f1_train, 4)}",
-                f"F1-score test: {np.round(f1_test, 4)}",
-                f"CV accuracy train: {np.round(cv_acc_train, 4)}",
-                f"CV accuracy test: {np.round(cv_acc_test, 4)}",
                 f"CV F1-score train: {np.round(cv_f1_train, 4)}",
-                f"CV F1-score test: {np.round(cv_f1_test, 4)}",
+                f"F1-score test: {np.round(f1_test, 4)}",
                 sep="\n")
 
             print("Classification report")
@@ -126,10 +120,12 @@ class MLPipeline:
             # log params, metrics, artifacts and model
             mlflow.log_params(model.named_steps["model"].get_params())
             mlflow.log_metrics({
+                "accuracy_train": acc_train,
                 "cv_accuracy_train": cv_acc_train,
-                "cv_accuracy_test": cv_acc_train,
+                "accuracy_test": acc_test,
+                "f1_score_train": f1_train,
                 "cv_f1_score_train": cv_f1_train,
-                "cv_f1_score_test": cv_f1_train})
+                "f1_score_test": f1_test})
             mlflow.sklearn.log_model(model, model_name)
 
             if save_model:
